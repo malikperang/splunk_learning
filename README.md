@@ -1,6 +1,6 @@
 ## Splunk Learning
 
-This repository intended to share my journey in learning Splunk. Feel free to follow and hopefully it will help some of the beginners to kickstart their journey in Big Data Orchestrations with Splunk.
+This repository intended to share my journey in learning Splunk. Feel free to follow and hopefully it will help some of the beginners to kickstart their journey in Machine Data Orchestrations with Splunk.
 
 ### Knowledge Prerequisites
 

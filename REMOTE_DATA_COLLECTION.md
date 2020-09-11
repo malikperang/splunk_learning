@@ -99,5 +99,5 @@ sourcetype = nginx:yoursite:error_logs
 
 3. Restart Splunk Universal Forwarder
 ```
-
+$ /opt/splunkforwarder/bin/splunk restart
 ```
