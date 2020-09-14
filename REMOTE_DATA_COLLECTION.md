@@ -2,6 +2,9 @@
 
 Using Splunk Universal Forwarder. We are able to collect and sync remote collection, such as HTTP logs,Database logs etc.
 
+## Scenario
+You are working on SOC department. You are need to collect Nginx HTTP Access & Error logs and display it via Dashboard
+
 ### Installation
 1. Install Splunk Universal Forwarder
 Debian/Ubuntu: 
@@ -29,9 +32,10 @@ $ ps aux | grep splunk
 $ /opt/splunkforwarder/bin/splunk enable boot-start
 ```
 
-### Configurations
+### Splunk Instance Configurations
 
-Scenario:  To collect Nginx HTTP Access & Error logs
+
+#### Configure Forwarder Instance
 
 1. Configure Nginx to generate logs in JSON format. 
 
@@ -72,9 +76,9 @@ Add the following
 defaultGroup = nginx
 
 [tcpout:nginx]
-server = mysplunk.mysite.com:9997
+server = mysplunk.mysite.com:8001
 
-[tcpout-server://mysplunk.mysite.com:9997]
+[tcpout-server://mysplunk.mysite.com:8001]
 
 ```
 Edit inputs.conf file
@@ -101,3 +105,17 @@ sourcetype = nginx:yoursite:error_logs
 ```
 $ /opt/splunkforwarder/bin/splunk restart
 ```
+
+#### Configure Receiver Instance
+1. Run this command on the Splunk Enterprise Instance. As for this, we expose TCP port 8001 as receiver port. By default it is port 9997
+```
+$ ./splunk enable listen 8001
+```
+
+**PLEASE NOTED
+The Splunk Forwarder will sync the data over TCP connection.
+
+References:
+https://docs.splunk.com/Documentation/Forwarder/8.0.5/Forwarder/Consolidatedatafrommultiplehosts
+
+
